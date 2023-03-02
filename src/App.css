@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .App {
     margin-top: 3rem;
 }
@@ -8,8 +12,16 @@
 
 .pokemonList {
     margin: 3rem;
+    margin-top: 0;
     padding: 0 3rem 3rem;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 2rem
+}
+
+.classes__container {
+    margin: 3rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0.5rem 3rem
 }

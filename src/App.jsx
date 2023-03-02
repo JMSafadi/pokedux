@@ -6,6 +6,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import Searcher from './components/Searcher';
 import PokemonList from './components/PokemonList';
 import { fetchPokemonsWithDetails } from './slices/dataSlice';
+import Classes from './components/Classes';
 
 function App() {
   const pokemons = useSelector(state => state.data.pokemonsFiltered, shallowEqual)
@@ -24,6 +25,8 @@ function App() {
       <Col span={8} offset={8}>
         <Searcher/>
       </Col>
+      <Classes></Classes>
+      {/* <Classes/> */}
       { loading
       ?
         <Col offset={12} style={{marginTop: '30px'}}>
