@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import './App.css'
 import { Col, Spin } from 'antd';
-import logo from './statics/logo.svg'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import Searcher from './components/Searcher';
 import PokemonList from './components/PokemonList';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { fetchPokemonsWithDetails } from './slices/dataSlice';
-import Classes from './components/Classes';
+import { BrowserRouter, createBrowserRouter, Route, Router, RouterProvider, Routes } from 'react-router-dom';
+import PokemonFavList from './components/PokemonFavList';
 
 function App() {
   const pokemons = useSelector(state => state.data.pokemonsFiltered, shallowEqual)
+  const pokemonsFavs = useSelector(state => state.data.pokemonsFavs, shallowEqual)
   const loading = useSelector(state => state.ui.loading)
   const dispatch = useDispatch()
 
@@ -17,24 +17,36 @@ function App() {
     dispatch(fetchPokemonsWithDetails())
   }, []);
 
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <PokemonList pokemons={pokemons}/>,
+    },
+    {
+      path: '/favorites',
+      element: <PokemonList pokemons={pokemonsFavs}/>,
+    }
+  ])
+
   return (
     <div className="App">
-      <Col span={5} offset={10} >
-        <img src={logo} alt='logo'/>
-      </Col>
-      <Col span={8} offset={8}>
-        <Searcher/>
-      </Col>
-      <Classes></Classes>
-      {/* <Classes/> */}
-      { loading
-      ?
-        <Col offset={12} style={{marginTop: '30px'}}>
-            <Spin spinning size='large'/>
-        </Col>
-      : 
-        <PokemonList pokemons={pokemons}/>
-      }
+        <RouterProvider router={router}>
+        <BrowserRouter>
+              <Routes>
+                  { loading
+                    ?
+                      <Col offset={12} style={{marginTop: '30px'}}>
+                          <Spin spinning size='large'/>
+                      </Col>
+                    : 
+                    <>
+                      <Route path='/' element={<PokemonList/>} />
+                      <Route path='/favorites' element={<PokemonFavList/>} />
+                    </>
+                  }
+              </Routes>
+        </BrowserRouter>
+      </RouterProvider>
     </div>
   )
 }

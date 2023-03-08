@@ -1,16 +1,31 @@
 import { Button, Col, Row } from 'antd';
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const Classes = () => {
+const PokeTypes = () => {
 
   const style = {margin: '10px'}
 
   return (
-    <div className='classes__container'>
+    <div className='pokeTypes__container'>
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
         <Col className="gutter-row" span={3}>
           <Button style={style}>Grass</Button>
         </Col>
+
+      {/* {
+        pokemons.map(e => e.types.map(e => {
+            if (e.type.name === e.type.name) {
+              return null
+            }
+            <Col className="gutter-row" span={3}>
+              <Button style={style}>
+                { e.type.name }
+              </Button>
+            </Col>
+          }
+        ))
+      } */}
+
         <Col className="gutter-row" span={3}>
           <Button style={style}>Poison</Button>
         </Col>
@@ -63,4 +78,4 @@ const Classes = () => {
   )
 }
 
-export default Classes;
+export default PokeTypes;

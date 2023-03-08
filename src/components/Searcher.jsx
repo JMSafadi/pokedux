@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Input } from 'antd';
+import { Col, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import { setFilter } from '../slices/dataSlice';
 import StarButton from './StarButton';
+import { useNavigate } from "react-router-dom";
 
 const Searcher = () => {
 
@@ -12,11 +13,19 @@ const Searcher = () => {
         dispatch(setFilter(e.target.value))
     }
 
+    const navigate = useNavigate()
+
+    const buttonNavToggle = () => {
+        navigate('/favorites')
+    }
+
     return (
-        <div style={{display: 'flex', gap: '10px'}}>
-            <Input.Search placeholder='Buscar...' onChange={handleOnChange}/>
-            <StarButton><Button></Button></StarButton>
-        </div>
+        <>
+            <Col span={8} offset={8} style={{display:'flex', gap:'10px'}}>
+                <Input.Search placeholder='Buscar...' onChange={handleOnChange}/>
+                <StarButton onClick={buttonNavToggle} />
+            </Col>
+        </>
     );
 }
 

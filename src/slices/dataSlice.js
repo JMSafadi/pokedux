@@ -4,7 +4,8 @@ import { setLoading } from './uiSlice'
 
 const initialState = {
     pokemons: [],
-    pokemonsFiltered : []
+    pokemonsFiltered: [],
+    pokemonsFavs: []
 }
 
 export const fetchPokemonsWithDetails = createAsyncThunk(
@@ -30,9 +31,17 @@ export const dataSlices = createSlice({
             const currentPokemonIndex = state.pokemonsFiltered.findIndex((pokemon) => {
                 return pokemon.id === action.payload.pokemonId
             })
+            const isFavorite = state.pokemonsFiltered[currentPokemonIndex].favorite
             if (currentPokemonIndex >= 0) {
-                const isFavorite = state.pokemonsFiltered[currentPokemonIndex].favorite
                 state.pokemonsFiltered[currentPokemonIndex].favorite = !isFavorite
+            }
+            const favoritePokemonIndex = state.pokemonsFavs.findIndex((pokemon) => {
+                return pokemon.id === action.payload.pokemonId
+            })
+            if (isFavorite && favoritePokemonIndex >= 0) {
+                state.pokemonsFavs.splice(favoritePokemonIndex, 1)
+            } else if (!isFavorite && favoritePokemonIndex === -1) {
+                state.pokemonsFavs.push(state.pokemonsFiltered[currentPokemonIndex])
             }
         },
         setFilter: (state, action) => {
@@ -42,6 +51,6 @@ export const dataSlices = createSlice({
     }
 })
 
-export const { setFavorite, setPokemons, setFilter } = dataSlices.actions
+export const { setFavorite, setPokemons, setFilter, addFavorite } = dataSlices.actions
 
 export default dataSlices.reducer
