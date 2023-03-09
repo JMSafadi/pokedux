@@ -7,7 +7,7 @@ Pokemons app con ReactJS. Pokedux te muestra los 151 mas conocidos y podes filtr
 * Vite
 * React
 * Ant desing
-* Redux/Redux toolkit/Redux thunk
+* Redux 
 * React-router
 * Axios
 
