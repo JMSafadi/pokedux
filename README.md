@@ -11,7 +11,8 @@ Pokemons app con ReactJS. Pokedux te muestra los 151 mas conocidos y podes filtr
 * React-router
 * Axios
 
-**Para correr el proyecto en servidor local:**
+**Para correr el proyecto en servidor local**
+Primero, clona el repositorio y despues corre los siguientes comandos:
 ```
 npm install
 npm run dev
