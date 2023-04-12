@@ -1,9 +1,9 @@
 [![pokedux.png](https://i.postimg.cc/v80mYHhz/pokedux.png)](https://postimg.cc/fk0s5s6t)
 # Pokedux
 
-Pokemons app con React. Pokedux te muestra los 151 mas conocidos y podes filtrarlos tanto por nombre, como por su tipo. Tambien podes seleccionar tus favoritos y verlos en otra ruta.
+Pokemon app with React. Pokedux shows you the 151 most well-known Pokemon, and you can filter them by both name and type. You can also select your favorites and view them on a separate route
 
-**Tecnologias:**
+**Technologies:**
 
 * Vite
 * React
@@ -12,7 +12,7 @@ Pokemons app con React. Pokedux te muestra los 151 mas conocidos y podes filtrar
 * React-router
 * Axios
 
-**Para correr el proyecto en servidor local, clona el repositorio y despues corre los siguientes comandos:**
+**To run the project on a local server, clone the repository and then run the following commands:**
 ```
 npm install
 npm run dev
@@ -20,5 +20,3 @@ npm run dev
 
 **Deploy:**
 [https://pokedux-app.web.app/](https://pokedux-app.web.app/)
-
-*Espero que te guste!*
